@@ -14,7 +14,7 @@ async def startup_event():
     await app.pika_producer_connection.connect()
     await app.pika_consumer_connection.connect()
     event_loop = asyncio.get_event_loop()
-    # event_loop.create_task(app.pika_consumer.consume())
+    event_loop.create_task(app.pika_consumer.consume())
 
 
 @app.on_event("shutdown")
