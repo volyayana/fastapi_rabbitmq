@@ -1,0 +1,7 @@
+AMQP_DSN=amqp://guest:guest@localhost:5672/?heartbeat=60&retry_delay=60&connection_attempts=10
+QUEUE_NAME=yana_queue
+ROUTING_KEY=yana_route
+DEAD_QUEUE_NAME=yana_dead_queue
+DEAD_EXCHANGE=yana_dead_exchange
+DEAD_ROUTING_KEY=yana_dead_routing_key
+MESSAGE_TTL=10

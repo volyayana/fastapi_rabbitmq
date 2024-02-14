@@ -11,16 +11,19 @@ app.include_router(messages_router)
 
 @app.on_event("startup")
 async def startup_event():
-    await app.pika_producer_connection.connect()
-    await app.pika_consumer_connection.connect()
+    await app.producer_connection.connect()
+    await app.consumer_connection.connect()
+
+    await app.consumer_connection.initialize_entities()
+
     event_loop = asyncio.get_event_loop()
-    event_loop.create_task(app.pika_consumer.consume())
+    event_loop.create_task(app.consumer.consume())
 
 
 @app.on_event("shutdown")
 async def startup_event():
-    await app.pika_producer_connection.close()
-    await app.pika_consumer_connection.close()
+    await app.producer_connection.close()
+    await app.consumer_connection.close()
 
 
 @app.get("/")

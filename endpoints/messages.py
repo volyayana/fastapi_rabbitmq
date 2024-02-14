@@ -10,4 +10,4 @@ async def send_message(
     message: Message,
     request: Request,
 ):
-    await request.app.pika_producer.send_message(message.message)
+    await request.app.producer.send_message(message.message)

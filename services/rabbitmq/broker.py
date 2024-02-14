@@ -61,7 +61,6 @@ class RabbitMQConnection(BrokerConnection):
             url=self.settings.amqp_dsn,
         )
         self.channel = await self.connection.channel()
-        await self.initialize_entities()
 
     async def close(self):
         await self.connection.close()
